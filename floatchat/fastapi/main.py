@@ -13,6 +13,9 @@ import plotly.io as pio
 import json
 from datetime import datetime, date
 import google.generativeai as genai
+import os
+import psycopg
+from psycopg.rows import dict_row
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -53,6 +56,22 @@ def get_supabase_client():
         return supabase
     except Exception as e:
         logger.error(f"Supabase connection failed: {e}")
+        raise HTTPException(status_code=500, detail="Database connection failed")
+
+def get_db_connection():
+    """Get a direct PostgreSQL database connection."""
+    database_url = (
+        os.environ.get("DATABASE_URL")
+        or os.environ.get("SUPABASE_DB_URL")
+        or os.environ.get("PG_CONNECTION_STRING")
+    )
+    if not database_url:
+        logger.error("Database connection string not configured in environment")
+        raise HTTPException(status_code=500, detail="Database connection string not configured")
+    try:
+        return psycopg.connect(database_url)
+    except Exception as e:
+        logger.error(f"Failed to establish database connection: {e}")
         raise HTTPException(status_code=500, detail="Database connection failed")
 
 # Pydantic models for requests/responses

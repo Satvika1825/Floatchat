@@ -4,15 +4,18 @@ Fast ETL: CSV → PostgreSQL + AI Embeddings
 Converts oceanographic data into AI-searchable database with batch processing
 """
 
+import os
 import pandas as pd
 import numpy as np
 import psycopg2
-import psycopg2.extras
+from psycopg2 import extras
 import google.generativeai as genai
 from pathlib import Path
 import time
 import logging
 from datetime import datetime
+
+PROD_DB_URL = os.getenv('PROD_DB_URL')
 
 # Set up detailed logging
 logging.basicConfig(
