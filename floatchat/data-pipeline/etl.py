@@ -25,8 +25,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Database connection
-PROD_DB_URL = "postgresql://postgres:Jagadeeswar%4015@db.qzazjhsvbhodoaplhrwm.supabase.co:5432/postgres"
+
 
 def load_csv(csv_file):
     """Load and clean CSV data"""
