@@ -1,0 +1,19 @@
+name: Ping Server
+
+on:
+  schedule:
+    # Runs every hour (you can change this cron expression)
+    - cron: "*/15 * * * *"
+  workflow_dispatch: # manual trigger
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Curl Agents
+        run: |
+          curl -s https://floatchat-agents.onrender.com/health
+
+      - name: Curl fastAPI
+        run: |
+          curl -s https://floatchat-aitu.onrender.com/health

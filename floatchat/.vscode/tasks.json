@@ -1,0 +1,33 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Frontend",
+      "type": "shell",
+      "command": "cd frontend && rmdir /s /q node_modules && del package-lock.json && npm i && npm run dev",
+      "problemMatcher": []
+    },
+    {
+      "label": "Agents",
+      "type": "shell",
+      "command": "cd agents && rmdir /s /q node_modules && del package-lock.json && npm i && npm run dev",
+      "problemMatcher": []
+    },
+    {
+      "label": "FastAPI",
+      "type": "shell",
+      "command": "cd fastapi && pip install -r requirements.txt && python main.py",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run All",
+      "dependsOn": [
+        "Frontend",
+        "Agents",
+        "FastAPI"
+      ],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    }
+  ]
+}

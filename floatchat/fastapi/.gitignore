@@ -1,0 +1,4 @@
+__pycache__
+agents/floatchat_service.json
+*.json
+.env

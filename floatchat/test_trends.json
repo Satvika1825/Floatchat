@@ -1,0 +1,14 @@
+{
+  "question": "explain the temperature and salinity trends in this region",
+  "sessionId": "session_test_trends_001",
+  "geographic_bounds": {
+    "lat_min": -14.237969785414492,
+    "lat_max": 11.572017472298427,
+    "lon_min": 70.0375599899321,
+    "lon_max": 86.34155036450858
+  },
+  "options": {
+    "max_results": 100,
+    "use_cache": true
+  }
+}
